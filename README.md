@@ -20,53 +20,30 @@ robot only can guess the words that are existed in dataset.
 
 # explaination of some variable that taken name in About Robot
 
-$word: correct word
+$word: correct word <br/>
+$list: list of all of guesses that are entered in app by users or robot until now. <br/>
+$greenletter :green leters are the letters that are placed in the correct position in correct word <br/>
+--- structure:[ letter[i] ] <br/>
+        letter: correct letter; <br/>
+        i: correct position of correct letter <br/>
+$yellowletter :yellow letters are the letters that have existed in correct word but in a wrong position. <br/>
+--- structure:[ letter[i] ] <br/>
+        letter: correct letter; <br/>
+        i: wrong position of correct letter <br/>
+$redletter : red letters are the letters that don't existed in correct word. <br/>
+--- structure:[ wrong letter ] <br/>
+$data:  my dataset (an array of all words in my dataset) <br/>
+$guess: the word that robot guesses. <br/>
+$wordInList: an array with length 1.$wordInList.length can be 0 or 1; <br/>
+---  if the  $guess is existed in $list => $wordInList =[$guess] <br/>
+---  else => $wordInList=[] <br/>
+$search: It is an array; each items has two parameters.this item is result of serch in $data for filtering it by $greenletter or $yellowletter  or both. <br/>
+--- structure:[[word,$sum]] <br/>
+        word:word of result of search in $data <br/>
+        sum($sum):it is a sum of the Score of each word for a better guess <br/>
 
-$list: list of all of guesses that are entered in app by users or robot until now.
-
-$greenletter :green leters are the letters that are placed in the correct position in correct word
-
----   structure:[ letter[i] ] 
-
---- ***    letter: correct letter;
-
---- ***    i: correct position of correct letter
-
-$yellowletter :yellow letters are the letters that have existed in correct word but in a wrong position.
-
----    structure:[ letter[i] ] 
-
---- ***        letter: correct letter;
-
---- ***        i: wrong position of correct letter
-
-$redletter : red letters are the letters that don't existed in correct word.
-
----    structure:[ wrong letter ] 
-
-$data:  my dataset (an array of all words in my dataset)
-
-$guess: the word that robot guesses.
-
-$wordInList: an array with length 1.$wordInList.length can be 0 or 1;
-
----    if the  $guess is existed in $list => $wordInList =[$guess]
-
----    else => $wordInList=[]
-
-$search: It is an array; each items has two parameters.this item is result of serch in $data for filtering it by $greenletter or $yellowletter  or both.
-
----    structure:[[word,$sum]]
-
---- ***        word:word of result of search in $data
-
---- ***        sum($sum):it is a sum of the Score of each word for a better guess
-
-
-
-In 'robot.js' we have getletter function.it has 2 input parameters ($word and $list) and return {$greenletter, $yellowletter, $redletter}
-
-almost of random functions have 3 input parameters ($word, $data and $list) and return a word as robot's guess.
+In 'robot.js' we have getletter function.it has 2 input parameters ($word and $list) and return {$greenletter, $yellowletter, $redletter} <br/>
+almost of random functions have 3 input parameters ($word, $data and $list) and return a word as robot's guess. <br/>
 
 ### How run app
 `npm install`

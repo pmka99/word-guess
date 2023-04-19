@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import GuessInput from './component/myinput'
+import React from 'react';
 import Game from './component/game'
 import SelectLevel from './component/selectlevel'
-import {Route, Routes, useNavigate} from 'react-router-dom'
+import {Route, Routes} from 'react-router-dom'
 
 function App() {
-  const navgivate=useNavigate()
 
   return (
     <div className="App">

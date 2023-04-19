@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+I built a web page by react.This app is a word guessing game that user can play with a robot.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Dataset
+file: word.txt
+the dataset contains 673 words.each word has 5 letter.
 
-## Available Scripts
+## About Game 
+First I created dynamic routes for 3 game levels.At first page, users can select level and go to a game and the app selects a word of dataset.In the game, they can guess the word until remain time of each turn. Robot satrt guessing as first player.each player can correct word earlier he/she/it is winner.the app pass each guess that enter by user or robot to 'src/component/guessInput.js' for showing in app window;in 'guessInput.js' word that guesses by player or robot, are passed to a function for showing the green letter,yellow letter and red letter.
 
-In the project directory, you can run:
+green leters are the letters that are placed in the correct position in correct word. yellow letters are the letters that have existed in correct word but in a wrong position. And red letters are the letters that don't existed in correct word.
+attension:in showing app, the color of red letters is gray.
 
-### `npm start`
+## About Robot
+Robot guesses by random function in some levels(random1,random2,random3,random5,random6,random10);
+each number of random functions show accuracy of robot's guesses.In each level and turn robot uses the one of the random functions.
+robot only can guess the words that are existed in dataset.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# explaination of some variable that taken name in ## About Robot
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+$word: correct word
+$list: list of all of guesses that are entered in app by users or robot until now.
+$greenletter :green leters are the letters that are placed in the correct position in correct word
+    structure:[ letter[i] ] 
+    letter: correct letter;
+    i: correct position of correct letter
+$yellowletter :yellow letters are the letters that have existed in correct word but in a wrong position.
+    structure:[ letter[i] ] 
+        letter: correct letter;
+        i: wrong position of correct letter
+$redletter : red letters are the letters that don't existed in correct word.
+    structure:[ wrong letter ] 
+$data:  my dataset (an array of all words in my dataset)
+$guess: the word that robot guesses.
+$wordInList: an array with length 1.$wordInList.length can be 0 or 1;
+    if the  $guess is existed in $list => $wordInList =[$guess]
+    else => $wordInList=[]
+$search: It is an array; each items has two parameters.this item is result of serch in $data for filtering it by $greenletter or $yellowletter  or both.
+    structure:[[word,$sum]]
+        word:word of result of search in $data
+        sum($sum):it is a sum of the Score of each word for a better guess
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+In 'robot.js' we have getletter function.it has 2 input parameters ($word and $list) and return {$greenletter, $yellowletter, $redletter}
 
-### `npm run build`
+almost of random functions have 3 input parameters ($word, $data and $list) and return a word as robot's guess.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### How run app
+`npm install`
+`npm start`
